@@ -1,0 +1,101 @@
+# =============================================================================
+# OBRIGATORIO: declaracao do que sera criado
+# =============================================================================
+
+[loggers]
+keys=root,logMainError,logMainWarning,logMainInfo,logMainDebug
+
+[handlers]
+keys=consoleHandler,infoHandler,warningHandler,errorHandler
+
+[formatters]
+keys=formatadorConsole,formatadorCsv1,formatadorErrorWarning
+
+# =============================================================================
+# CONFIGURACOES
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Loggers
+# -----------------------------------------------------------------------------
+
+[logger_root]
+level=DEBUG
+handlers=consoleHandler
+
+[logger_logMainError]
+level=ERROR
+handlers=errorHandler
+propagate=0
+qualname=logMain
+
+[logger_logMainWarning]
+level=WARNING
+handlers=warningHandler
+propagate=1
+qualname=logMain.warning
+
+[logger_logMainInfo]
+level=INFO
+handlers=infoHandler
+propagate=1
+qualname=logMain.warning.info
+
+[logger_logMainDebug]
+level=DEBUG
+handlers=consoleHandler
+propagate=1
+qualname=logMain.warning.info.debug
+
+# -----------------------------------------------------------------------------
+# Handlers
+# -----------------------------------------------------------------------------
+
+[handler_consoleHandler]
+class=StreamHandler
+level=DEBUG
+formatter=formatadorConsole
+args=(sys.stdout,)
+
+[handler_infoHandler]
+class=FileHandler
+level=INFO
+formatter=formatadorCsv1
+args=("log/main_run.log", "w")
+
+[handler_warningHandler]
+class=FileHandler
+level=WARNING
+formatter=formatadorErrorWarning
+args=("log/log_warning.csv", "a")
+
+[handler_errorHandler]
+class=FileHandler
+level=ERROR
+formatter=formatadorErrorWarning
+args=("log/log_error.csv", "a")
+
+# -----------------------------------------------------------------------------
+# Formatters
+# -----------------------------------------------------------------------------
+
+[formatter_formatadorConsole]
+class=logging.Formatter
+format=[CONSOLE | %(asctime)s | %(levelname)s] %(message)s
+datefmt=%Y-%m-%d %H:%M:%S
+style=%
+validate=True
+
+[formatter_formatadorCsv1]
+class=logging.Formatter
+format=%(asctime)s;%(levelname)s;%(message)s
+datefmt=%Y-%m-%d %H:%M:%S
+style=%
+validate=True
+
+[formatter_formatadorErrorWarning]
+class=logging.Formatter
+format=%(asctime)s\\t%(levelname)s\\t%(message)s
+datefmt=%Y-%m-%d %H:%M:%S
+style=%
+validate=True
