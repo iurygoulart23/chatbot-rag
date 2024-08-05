@@ -2,8 +2,8 @@
 import os
 import streamlit as st
 from dotenv import find_dotenv, load_dotenv
-import chatbot
-import chatbot_com_rag
+import chatbot_normal
+# import chatbot_com_rag
 
 # CONSTANTES E VARIÁVEIS DE AMBIENTE
 load_dotenv(find_dotenv())
@@ -18,7 +18,7 @@ if not TOKEN_ACESSO:
 
 def login():
     token_acesso = st.text_input(
-        "Token de acesso", key="usr_token", type="password"
+        "Token de acesso", key="usr_token1", type="password"
     )
     if st.button("Log in"):
         if not token_acesso:
@@ -60,37 +60,19 @@ def main() -> None:
 
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
-
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", ["Log in", "Home", "Chatbot", "Chatbot com RAG"])
-
-    if page == "Log in":
-        login()
-    elif page == "Home":
-        home()
-    elif page == "Chatbot":
         
-        chatbot()
-    elif page == "Chatbot com RAG":
-        
-        chatbot_com_rag()
     # -----------------------------------------------------------------------------
     # Definindo as páginas da aplicação
     # -----------------------------------------------------------------------------
 
     # Página de login
-    # login_page = st.Page(login, title="Log in", icon=":material/login:")
+    login_page = st.Page(login, title="Log in", icon=":material/login:")
 
-    # # Página home
-    # home_page = st.Page(home, title="Home", icon="🏠")
+    # Página home
+    home_page = st.Page(home, title="Home", icon="🏠")
 
-    # # Página chatbot convencional
-    # chatbot = st.Page("chatbot.py", title="Chatbot", icon="🤖")
-
-    # # Página chatbot com RAG
-    # chatbot_com_rag = st.Page(
-    #     "chatbot_com_rag.py", title="Chatbot com RAG", icon="📕"
-    # )
+    # Página chatbot convencional
+    chatbot = st.Page("chatbot_normal.py", title="Chatbot", icon="🤖")
 
     # -----------------------------------------------------------------------------
     # Verificando se a sessão atual está logada
@@ -99,7 +81,7 @@ def main() -> None:
     if st.session_state.logged_in:
         pg = st.navigation({
             "Home": [home_page],
-            "Chats": [chatbot, chatbot_com_rag],
+            "Chats": [chatbot],
         })
     else:
         pg = st.navigation([login_page])

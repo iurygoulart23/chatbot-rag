@@ -28,9 +28,12 @@ if not AZURE_DEPLOYMENT:
     raise EnvironmentError(
         "AZURE_OPENAI_EMBEDDING_DEPLOYMENT não está nas variáveis de ambiente!"
     )
+
+# gera o path do projeto e path pra pasta data
 DIR_PROJETO = get_path_projeto()
 assert isinstance(DIR_PROJETO, Path)
-DIR_DADOS = DIR_PROJETO / "data"
+DIR_DADOS = DIR_PROJETO / "data" 
+
 
 MODELO_EMBEDDING = AzureOpenAIEmbeddings(azure_deployment=AZURE_DEPLOYMENT)
 
