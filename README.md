@@ -51,3 +51,8 @@ ___
    AZURE_OPENAI_CHAT_DEPLOYMENT=**********
    AZURE_OPENAI_EMBEDDING_DEPLOYMENT=**********
    ```
+
+4. Rode o comando:
+    ```sh
+    streamlit run ./chatbot/app.py
+    ```
