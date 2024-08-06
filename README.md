@@ -38,6 +38,7 @@ ___
 3. Crie os recursos necessários na Azure
    - Crie os modelos e as implantações para pegar os tokens.
 <br>
+
 4. Crie o arquivo `.env` com as variáveis de ambiente:
    ```env
    NOME_PROJETO=chatbot
