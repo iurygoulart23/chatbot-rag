@@ -39,7 +39,7 @@ def home():
         st.session_state.logged_in = False
         st.rerun()
 
-    st.write("# Bem-vindo ao Ultimate Chat Blaster 🚀! 👋")
+    st.write("# Bem-vindo ao Ultimate Chat Blaster! 👋")
 
     st.markdown(
         """
@@ -74,6 +74,9 @@ def main() -> None:
     # Página chatbot convencional
     chatbot = st.Page("chatbot_normal.py", title="Chatbot", icon="🤖")
 
+    # Página chatbot convencional
+    chatbot_rag = st.Page("chatbot_com_rag.py", title="Chatbot Rag", icon="🐱")
+
     # -----------------------------------------------------------------------------
     # Verificando se a sessão atual está logada
     # -----------------------------------------------------------------------------
@@ -81,7 +84,7 @@ def main() -> None:
     if st.session_state.logged_in:
         pg = st.navigation({
             "Home": [home_page],
-            "Chats": [chatbot],
+            "Chats": [chatbot, chatbot_rag],
         })
     else:
         pg = st.navigation([login_page])

@@ -31,9 +31,8 @@ if not AZURE_DEPLOYMENT:
 
 # gera o path do projeto e path pra pasta data
 DIR_PROJETO = get_path_projeto()
-assert isinstance(DIR_PROJETO, Path)
-DIR_DADOS = DIR_PROJETO / "data" 
-
+DIR_DADOS = Path(DIR_PROJETO) / "data"
+DIR_DADOS.mkdir(exist_ok=True)
 
 MODELO_EMBEDDING = AzureOpenAIEmbeddings(azure_deployment=AZURE_DEPLOYMENT)
 
@@ -69,8 +68,9 @@ def carrega_pdf(documento_pdf: BytesIO) -> List[Document]:
 
 
 def cria_vectorstore(
-    documento_pdf: BytesIO, path_destino: Path
-) -> VectorStoreRetriever:
+    documento_pdf: BytesIO,
+    path_destino: Path) -> VectorStoreRetriever:
+    
     docs = carrega_pdf(documento_pdf)
     db = FAISS.from_documents(docs, MODELO_EMBEDDING)
     db.save_local(str(path_destino))
@@ -84,8 +84,8 @@ def cria_vectorstore(
 
 
 def get_vectorstore_as_retriver(
-    documento_pdf: BytesIO,
-) -> VectorStoreRetriever:
+    documento_pdf: BytesIO) -> VectorStoreRetriever:
+    
     path_vectorstore = DIR_DADOS / f"{Path(documento_pdf.name).stem}"
 
     if not path_vectorstore.exists():

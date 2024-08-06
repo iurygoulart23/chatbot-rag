@@ -26,4 +26,4 @@ if not AZURE_DEPLOYMENT:
 def get_client() -> AzureChatOpenAI:
     client_azure_openai = AzureChatOpenAI(azure_deployment=AZURE_DEPLOYMENT)
     return client_azure_openai
-    return client_azure_openai
+    

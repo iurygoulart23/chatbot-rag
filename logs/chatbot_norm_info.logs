@@ -1,0 +1,13 @@
+2024-08-06 09:58:21;HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/gpt-35-turbo-16k/chat/completions?api-version=2024-05-01-preview "HTTP/1.1 200 OK";
+2024-08-06 09:58:21;Input: 210;Output: 251;Total: 461;PROMPT: baseado na sua resposta anterior sobre o iphone, qual é melhor, iphone ou samsung?;
+2024-08-06 10:06:52; HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/gpt-35-turbo-16k/chat/completions?api-version=2024-05-01-preview "HTTP/1.1 200 OK";
+2024-08-06 10:06:52; Input: 74;Output: 160;Total: 234;PROMPT: O que é um iphone?;
+2024-08-06 11:18:23; HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/gpt-35-turbo-16k/embeddings?api-version=2024-05-01-preview "HTTP/1.1 400 Bad Request";
+2024-08-06 11:18:46; HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/gpt-35-turbo-16k/embeddings?api-version=2024-05-01-preview "HTTP/1.1 400 Bad Request";
+2024-08-06 13:13:48; HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/gpt-35-turbo-16k/embeddings?api-version=2024-05-01-preview "HTTP/1.1 400 Bad Request";
+2024-08-06 13:18:41; HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/gpt-35-turbo-16k/embeddings?api-version=2024-05-01-preview "HTTP/1.1 400 Bad Request";
+2024-08-06 13:21:44; HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/text-embedding-ada-002/embeddings?api-version=2024-05-01-preview "HTTP/1.1 200 OK";
+2024-08-06 13:21:44; Loading faiss with AVX512 support.;
+2024-08-06 13:21:44; Successfully loaded faiss with AVX512 support.;
+2024-08-06 13:21:48; HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/text-embedding-ada-002/embeddings?api-version=2024-05-01-preview "HTTP/1.1 200 OK";
+2024-08-06 13:21:52; HTTP Request: POST https://modelos-grm.openai.azure.com//openai/deployments/gpt-35-turbo-16k/chat/completions?api-version=2024-05-01-preview "HTTP/1.1 200 OK";

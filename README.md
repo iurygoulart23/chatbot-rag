@@ -3,8 +3,8 @@
 
 **Autor:** Iury Goulart
 ___
-No momento o chatbot-rag ainda está em desenvolvimento...
-Porém o chatbot normal já está finalizado e funcional.
+Finalização do chatbot-rag...
+<br>Porém falta implementar a continuidade do chat e referencia de onde foi retirada a informação.
 ___
 
 ### Requisitos
@@ -35,8 +35,10 @@ ___
    ```sh
    pip install -r ./requirements/prod.txt
    ```
-
-3. Crie o arquivo `.env` com as variáveis de ambiente:
+3. Crie os recursos necessários na Azure
+   - Crie os modelos e as implantações para pegar os tokens.
+<br>
+4. Crie o arquivo `.env` com as variáveis de ambiente:
    ```env
    NOME_PROJETO=chatbot
 
@@ -52,7 +54,7 @@ ___
    AZURE_OPENAI_EMBEDDING_DEPLOYMENT=**********
    ```
 
-4. Rode o comando:
+5. Rode o comando:
     ```sh
     streamlit run ./chatbot/app.py
     ```

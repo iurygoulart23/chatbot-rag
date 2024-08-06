@@ -6,6 +6,7 @@ import json
 import streamlit as st
 import logging
 from azure_client_helper import get_client
+import socket
 
 # =============================================================================
 # CÓDIGO
@@ -13,13 +14,21 @@ from azure_client_helper import get_client
 
 # ---------------- logs ------------------
 
+# salva info basica do chatbot
 logging.basicConfig(
-    filename='./logs/chatbot_normal.logs',
+    filename='./logs/chatbot_norm_info.logs',
     level=logging.INFO,
-    format='%(asctime)s - %(message)s',
+    format='%(asctime)s; %(message)s;',
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 
+# Logger para os prompts
+prompt_logger = logging.getLogger('prompt_logger')
+
+if not prompt_logger.handlers:
+    prompt_handler = logging.FileHandler('./logs/chatbot_prompt.logs')
+    prompt_handler.setFormatter(logging.Formatter('%(asctime)s;%(message)s;', datefmt='%Y-%m-%d %H:%M:%S'))
+    prompt_logger.addHandler(prompt_handler)
 
 # -----------------------------------------------------------------------------
 # Inicializando o cliente da API
@@ -85,8 +94,8 @@ if prompt := st.chat_input():
     tokens_output = metadados.get('completion_tokens')
     total_tokens = metadados.get('total_tokens')
     
-    # Log dos tokens
-    logging.info(f'Tokens usados - Input: {tokens_input}, Output: {tokens_output}, Total: {total_tokens}')
+    # Log do prompt
+    prompt_logger.info(f'Input: {tokens_input};Output: {tokens_output};Total: {total_tokens};PROMPT: {prompt}')
 
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)

@@ -16,7 +16,7 @@ from vector_store_helper import get_vectorstore_as_retriver
 # =============================================================================
 
 DIR_PROJETO = get_path_projeto()
-assert isinstance(DIR_PROJETO, Path)
+DIR_PROJETO = Path(DIR_PROJETO)
 
 TEMPLATE_PROMPT = """Responda a pergunta utilizando o contexto como base, mas enriqueça a resposta se você souber sobre o assunto:
 
@@ -55,15 +55,12 @@ pergunta = st.text_input(
     disabled=not arquivo_upado,
 )
 
-
 # -----------------------------------------------------------------------------
 # Parte responsavel pelo RAG
 # -----------------------------------------------------------------------------
 
-
 def gruda_pedacos(docs):
     return "\\n\\n".join(doc.page_content for doc in docs)
-
 
 rag_chain = None
 if arquivo_upado:
